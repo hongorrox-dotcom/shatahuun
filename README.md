@@ -18,6 +18,22 @@ npm start
 API түлхүүргүй үед симулятор ажиллана, зөвхөн туслах ажиллахгүй.
 Түлхүүрийг https://console.anthropic.com хаягаас авна.
 
+## Vercel дээр байрлуулах
+
+1. Vercel дээр GitHub-ийн `hongorrox-dotcom/shatahuun` repository-г импортлоно.
+2. Framework Preset-ийг `Other`, Build Command-ийг хоосон үлдээнэ.
+3. Дараах Environment Variables-ийг нэмнэ:
+
+```text
+ANTHROPIC_API_KEY=таны_claude_api_key
+ANTHROPIC_MODEL=claude-opus-5
+ANTHROPIC_EFFORT=medium
+```
+
+`api/` доторх Serverless Function-ууд `/api/chat` болон `/api/runs` endpoint-уудыг ажиллуулж, `vercel.json` нь `public/` доторх frontend-ийг үйлчилнэ.
+
+Vercel-ийн function filesystem байнгын хадгалалтгүй тул хадгалсан симуляциуд одоогоор `/tmp` дотор best-effort хадгалагдана. Олон хэрэглэгчтэй эсвэл байнгын хадгалалт шаардлагатай deployment-д `server/vercel.js`-ийн store-г Vercel KV, Supabase зэрэг database-ээр солих хэрэгтэй.
+
 ## Бүтэц
 
 ```
