@@ -1,0 +1,15 @@
+{
+  "name": "fuel92-simulator",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Шатахууны үнэ 92 — Vensim загварын вэб симулятор, Claude API туслахтай",
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server/index.js",
+    "dev": "node --env-file-if-exists=.env --watch server/index.js"
+  },
+  "engines": { "node": ">=22" },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.129.0"
+  }
+}

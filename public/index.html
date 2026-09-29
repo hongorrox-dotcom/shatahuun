@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="mn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Шатахууны үнэ 92 симулятор</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+<script type="module" src="js/app.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <span><b>Шатахууны үнэ 92</b> · системийн динамик загвар</span>
+  </div>
+  <header>
+    <div>
+      <h1>АИ-92 бензиний үнэ хаашаа явах вэ?<span class="grade"><small>АИ</small>92</span></h1>
+      <p class="lede">Татвар, зардал, нөөцийн сав, нийтийн тээврийн бодлогыг өөрчилж, 2035 он хүртэлх үнэ, инфляци, нөөцөд хэрхэн нөлөөлөхийг харна уу. <em>Тасархай шугам</em> нь загварын анхны тохиргоо.</p>
+    </div>
+    <div class="board" id="board" aria-live="polite"></div>
+  </header>
+
+  <details class="saved" id="saved" open>
+    <summary><b>Хадгалсан симуляциуд</b><span class="count" id="saved-count"></span><span class="where" id="saved-where">Хадгалах сан ачаалж байна…</span></summary>
+    <div class="saved-body">
+      <form class="save-row" id="save-form">
+        <input id="save-name" type="text" maxlength="80" placeholder="Нэр, жишээ нь: НӨАТ 12%, сав 2028" aria-label="Симуляцийн нэр">
+        <button class="btn primary" id="save-btn" type="submit" disabled>Одоогийн симуляцийг хадгалах</button>
+      </form>
+      <div class="save-msg" id="save-msg" role="status"></div>
+      <div class="runs" id="runs"></div>
+      <div class="empty-note" id="runs-empty">Хадгалсан симуляци алга. Параметрүүдээ тохируулаад нэр өгч хадгалбал энд харагдана. Хадгалсан симуляцуудаас 4 хүртэлхийг графикт харьцуулж болно.</div>
+    </div>
+  </details>
+
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" id="tab-s1" aria-controls="s1" aria-selected="true"><span class="n" aria-label="Сектор 1">1</span>Шатахууны хэрэглээ</button>
+    <button class="tab" role="tab" id="tab-s2" aria-controls="s2" aria-selected="false"><span class="n" aria-label="Сектор 2">2</span>Шатахууны өртөг</button>
+  </div>
+
+  <section class="sector" id="s1" role="tabpanel" aria-labelledby="tab-s1"></section>
+  <section class="sector" id="s2" role="tabpanel" aria-labelledby="tab-s2" hidden></section>
+</div>
+
+<button class="fab" id="chat-open" type="button" aria-controls="chat" aria-expanded="false"><span class="dot" aria-hidden="true"></span>Загвараас асуух</button>
+<div class="chat" id="chat" role="dialog" aria-label="Загварын туслах" hidden>
+  <div class="chat-h">
+    <div><b>Загварын туслах</b><small>Claude · загварыг тайлбарлаж, хувилбар туршиж, параметр тохируулна</small></div>
+    <button class="x" id="chat-close" type="button" aria-label="Хаах">×</button>
+  </div>
+  <div class="msgs" id="chat-msgs" aria-live="polite"></div>
+  <div class="chips" id="chat-chips"></div>
+  <form id="chat-form">
+    <textarea id="chat-input" rows="1" placeholder="Асуултаа бичнэ үү…" aria-label="Асуулт"></textarea>
+    <button class="send" id="chat-send" type="submit">Илгээх</button>
+  </form>
+</div>
+</body>
+</html>
